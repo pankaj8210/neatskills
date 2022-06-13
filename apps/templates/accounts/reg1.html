@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+body {
+    background: linear-gradient(45deg, #ce1e53, #8f00c7);
+    min-height: 100vh
+}
+
+body::-webkit-scrollbar {
+    display: none
+}
+
+.wrapper {
+    max-width: 1270px;
+    height: auto ;
+    margin: 25px 50px;
+    padding: 40px 45px;
+}
+
+.wrapper label {
+    display: block;
+    padding-bottom: 0.2rem
+}
+
+.wrapper .form .row {
+    padding: 0.6rem 0
+}
+
+.wrapper .form .row .form-control {
+    box-shadow: none
+}
+
+.wrapper .form .option {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer
+}
+
+.wrapper .form .option input {
+    opacity: 0
+}
+
+.wrapper .form .checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #bbb;
+    border-radius: 50%
+}
+
+.wrapper .form .option input:checked~.checkmark:after {
+    display: block
+}
+
+.wrapper .form .option:hover .checkmark {
+    background: #f3f3f3
+}
+
+.wrapper .form .option .checkmark:after {
+    content: "";
+    width: 10px;
+    height: 20px;
+    display: block;
+    background: linear-gradient(100deg, #ce1e53, #8f00c7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out 0s
+}
+
+.wrapper .form .option input[type="radio"]:checked~.checkmark {
+    background: #fff;
+    transition: 300ms ease-in-out 0s
+}
+
+.wrapper .form .option input[type="radio"]:checked~.checkmark:after {
+    transform: translate(-50%, -50%) scale(1)
+}
+
+#sub {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333
+}
+
+#sub:focus {
+    outline: none
+}
+
+@media(max-width: 768.5px) {
+    .wrapper {
+        margin: 30px
+    }
+
+    .wrapper .form .row {
+        padding: 0
+    }
+}
+
+@media(max-width: 400px) {
+    .wrapper {
+        padding: 25px;
+        margin: 20px
+    }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* background-color: #2196F3; */
+  padding: 2px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 10px;
+  text-align: center;
+}
+.menu,
+.content{
+    width: 100%;
+}
+.menu1,
+.content1{
+    width: 100%;
+}
+select{
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-weight:  700;
+    font-family: 'Poppins',sans-serif;
+    border: none;
+    border-radius: 8px;
+    border: 2px solid #3f51b5;
+    box-shadow: 0 15px 15px #efefef;
+    appearance: none;
+    background-position: 95% 95%;
+    background-size: 22px;
+}
+.content{
+    margin: 30px 0;
+}
+.content1{
+    margin: 30px 0;
+}
+.content .data{
+    padding: 25px;
+    background-color: #fff;
+    border: 2px solid #8bc34a;
+    border-radius: 8px;
+}
+.content1 .data1{
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #8bc34a;
+    border-radius: 8px;
+}
+.content p{
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid gainsboro;
+}
+.content1 input{
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid gainsboro;
+}
+.content p :last-child{
+    border-bottom: none;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+.content1 input :last-child{
+    border-bottom: none;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+.content p b{
+    font-weight: 700;
+
+}
+.content p span{
+    float: right;
+    font-weight: normal;
+}
+.data{
+    display: none;
+}
+.data1{
+    display: none;
+}
+
+
+
+</style>
+</head>
+<body>
+    <form action="/ref/" method="post" >{% csrf_token %}
+<div class="wrapper rounded bg-white">
+    <div class="h3">Registration Form</div>
+    <div class="form">
+        <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3"> <label>First Name</label> <input type="text" name="rfname" class="form-control" required> </div>
+            <div class="col-md-6 mt-md-0 mt-3"> <label>Last Name</label> <input type="text"name="lfname" class="form-control" required> </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3"> <label>Birthday</label> <input type="date" name="rbname" class="form-control" required> </div>
+            <div class="col-md-6 mt-md-0 mt-3"> <label>Gender</label>
+                <div class="d-flex align-items-center mt-2"> <label class="option"> <input type="radio" value="Male" name="rradio">Male <span class="checkmark"></span> </label> <label class="option ms-4"> <input type="radio" value="Female" name="rradio">Female <span class="checkmark"></span> </label> </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mt-md-0 mt-3"> <label>Email</label> <input type="email" name="remail" class="form-control" required> </div>
+            <div class="col-md-4 mt-md-0 mt-3"> <label>Phone Number</label> <input type="tel" name="rphone" class="form-control" required> </div>
+            <div class="col-md-4 mt-md-0 mt-3"> <label>Alternate Number</label> <input type="tel2" name="arphone" class="form-control" required> </div>
+        </div><br>
+        <div class="row">
+            <label for="praddress">Present Address</label>
+                <textarea id="praddress" name="praddress" rows="4" cols="100">
+                   </textarea>
+        </div>
+        <label for="state">Choose State:</label>
+             <select name="rstate"  id="state" class="form-control">
+                <option value="" selected hidden>Choose Option</option>
+             <option value="Andhra Pradesh">Andhra Pradesh</option>
+             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+             <option value="Assam">Assam</option>
+             <option value="Bihar">Bihar</option>
+             <option value="Chandigarh">Chandigarh</option>
+             <option value="Chhattisgarh">Chhattisgarh</option>
+             <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+             <option value="Daman and Diu">Daman and Diu</option>
+             <option value="Delhi">Delhi</option>
+             <option value="Lakshadweep">Lakshadweep</option>
+             <option value="Puducherry">Puducherry</option>
+             <option value="Goa">Goa</option>
+             <option value="Gujarat">Gujarat</option>
+             <option value="Haryana">Haryana</option>
+             <option value="Himachal Pradesh">Himachal Pradesh</option>
+             <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+             <option value="Jharkhand">Jharkhand</option>
+             <option value="Karnataka">Karnataka</option>
+             <option value="Kerala">Kerala</option>
+             <option value="Madhya Pradesh">Madhya Pradesh</option>
+             <option value="Maharashtra">Maharashtra</option>
+             <option value="Manipur">Manipur</option>
+             <option value="Meghalaya">Meghalaya</option>
+             <option value="Mizoram">Mizoram</option>
+             <option value="Nagaland">Nagaland</option>
+             <option value="Odisha">Odisha</option>
+             <option value="Punjab">Punjab</option>
+             <option value="Rajasthan">Rajasthan</option>
+             <option value="Sikkim">Sikkim</option>
+             <option value="Tamil Nadu">Tamil Nadu</option>
+             <option value="Telangana">Telangana</option>
+             <option value="Tripura">Tripura</option>
+             <option value="Uttar Pradesh">Uttar Pradesh</option>
+             <option value="Uttarakhand">Uttarakhand</option>
+             <option value="West Bengal">West Bengal</option>
+             </select>
+        <div class="row">
+            <div class="col-md-4 mt-md-0 mt-3">
+             <label>Village</label>
+             <input type="text" name="rvillage" class="form-control" required></div>
+
+            <div class="col-md-4 mt-md-0 mt-3">
+             <label>District</label>
+             <input type="text" name="rdistrict" class="form-control" required></div>
+
+             <div class="col-md-4 mt-md-0 mt-3">
+                <label>Pin-code</label>
+                <input type="number" name="rpincode" class="form-control" required></div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-4 mt-md-0 mt-3">
+                <label>City</label>
+                <input type="text" name="rcity" class="form-control" required></div>
+            <div class="col-md-4 mt-md-0 mt-3">
+             <label>Aadhar</label>
+             <input type="number" name="raadhar" class="form-control" required></div>
+                <div class="col-md-4 mt-md-0 mt-3"> <label>Active</label>
+                    <div class="d-flex align-items-center mt-2"> <label class="option"> <input type="radio" value="True" name="acradio">Yes <span class="checkmark"></span> </label> <label class="option ms-4"> <input type="radio" value="False" name="acradio">No <span class="checkmark"></span> </label> </div>
+                </div>
+            </div>
+
+
+    <label>Qualifiction:</label>
+        <div class="menu1">
+            <select id="qualification" name="rqalification">
+                <option value="" selected hidden>Choose Qualifiction</option>
+                <option value="ssc">SSC</option>
+                <option value="hsc">HSC</option>
+                <option value="graduation">Graduation</option>
+            </select>
+        </div>
+
+        <div class="content1">
+            <div id="ssc" class="data1">
+                <input type="text" name="sscs" placeholder="Enter SSC School">
+                <input type="text" name="sscpy" placeholder="Enter SSC Passing Year">
+                <input type="text" name="sscom" placeholder="Enter SSC Obtain Marks">
+                <input type="text" name="sscg" placeholder="Enter SSC Grade">
+            </div>
+            <div class="content1">
+                <div id="hsc" class="data1">
+                    <input type="text" name="sscs" placeholder="Enter HSC School/College">
+                    <input type="text" name="sscpy" placeholder="Enter HSC Passing Year">
+                    <input type="text" name="sscom" placeholder="Enter HSC Obtain Marks">
+                    <input type="text" name="sscg" placeholder="Enter HSC Grade">
+                </div>
+
+                <div class="content1">
+                    <div id="graduation" class="data1">
+                        <input type="text" name="sscs" placeholder="Enter Graduation College">
+                        <input type="text" name="sscpy" placeholder="Enter Graduation Passing Year">
+                        <input type="text" name="sscom" placeholder="Enter Graduation Obtain Marks">
+                        <input type="text" name="sscg" placeholder="Enter Graduation Grade">
+                    </div>
+
+
+    <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3">
+             <label>Updated by</label>
+             <input type="text" name="rupdated" class="form-control" required></div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+             <label>Last Updated On</label>
+             <input type="date" name="rlstupon" class="form-control" required></div>
+        </div><br>
+<!--        <label for="courcename">Choose Course:</label>-->
+<!--            <div class="menu">-->
+<!--             <select id="coursename">-->
+<!--            <option value="" selected hidden>Choose Option</option>-->
+<!--             <option value="BasicAccounting">Basic Accounting</option>-->
+<!--             <option value="BusinessCentral">Business Central</option>-->
+<!--             <option value="AdvancedAccounting">Advanced Accounting</option>-->
+<!--             </select>-->
+<!--            </div>-->
+<!--            <div class="content">-->
+
+<!--                <div id="BasicAccounting" class="data">-->
+<!--                    <p><b>Cource Name</b><span>Basic Accounting</span></p>-->
+<!--                    <p><b>Cource Duration</b><span>3 Months</span></p>-->
+<!--                    <p><b>Cource Price</b><span>4000</span></p>-->
+<!--                    <a href="/rrh/" class="btn btn-primary mt-3">tPay</a>-->
+<!--                </div>-->
+<!--                <div id="BusinessCentral" class="data">-->
+<!--                    <p><b>Cource Name</b><span>Business Central</span></p>-->
+<!--                    <p><b>Cource Duration</b><span>5 Months</span></p>-->
+<!--                    <p><b>Cource Price</b><span>5000</span></p>-->
+<!--                    <a href="/rrh/" class="btn btn-primary mt-3">tPay</a>-->
+<!--                </div>-->
+<!--                <div id="AdvancedAccounting" class="data">-->
+<!--                    <p><b>Cource Name</b><span>Advanced Accounting</span></p>-->
+<!--                    <p><b>Cource Duration</b><span>4 Months</span></p>-->
+<!--                    <p><b>Cource Price</b><span>8000</span></p>-->
+<!--                    <a href="/rrh/" class="btn btn-primary mt-3">tPay</a>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+<!--          <div class="row">-->
+<!--            <div class="col-md-4 mt-md-0 mt-3">-->
+<!--             <label>Fee</label>-->
+<!--             <input type="number" step="0.01" name="rfee" class="form-control" required></div>-->
+
+<!--            <div class="col-md-4 mt-md-0 mt-3">-->
+<!--             <label>Fee Paid date</label>-->
+<!--             <input type="date" name="rfeepaiddate" class="form-control" required></div>-->
+
+<!--             <div class="col-md-4 mt-md-0 mt-3">-->
+<!--                <label>Fee Paid Amount</label>-->
+<!--                <input type="number" step="0.01" name="rfeepaidamount" class="form-control" required></div>-->
+<!--        </div><br>-->
+
+
+
+    <button class="btn btn-primary mt-3" type="submit" style="position: absolute;">gubmit</button>
+    </div>
+</div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        $("#coursename").on('change',function(){
+            $(".data").hide();
+           $("#" + $(this).val()).fadeIn(700);
+         }).change();
+
+    });
+    $(document).ready(function(){
+
+$("#qualification").on('change',function(){
+    $(".data1").hide();
+   $("#" + $(this).val()).fadeIn(700);
+ }).change();
+
+});
+
+
+
+</script>
+
+</body>
+</html>

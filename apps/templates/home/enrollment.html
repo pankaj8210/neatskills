@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+
+<style>
+    tr{
+        text-align: center;
+    }
+</style>
+
+<hr>
+<form method="post" enctype="multipart/form-data" action="#">
+    {% csrf_token %}
+<div class="container">
+<table class="table table-hover " id="example">
+    <thead>
+        <tr style="background-color:darkolivegreen; color : white">
+            <th>S.No.</th>
+            <th>Course Name</th>
+            <th>Course Price</th>
+            <th>Courseduration</th>
+
+            <!-- <th>Gender</th> -->
+            <!-- <th>Image</th> -->
+        </tr>
+
+    </thead>
+
+        <tbody>
+            {% for i in a %}
+
+            <tr style="background-color: #DEB887;">
+                <td>{{forloop.counter}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.courseduration}}</td>
+
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+</table>
+
+</div>
+    </form>
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

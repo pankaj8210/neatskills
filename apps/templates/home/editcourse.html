@@ -1,0 +1,133 @@
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+<style>
+    input{
+  display:block;
+}
+
+.mybutton {
+  background-color: green;
+  color: white;
+  border: 2px solid red; /* Green */
+}
+
+
+</style>
+
+<hr>
+<div class="card-body">
+<form class="container mt-5"  name="editcoursedetails" method="post" enctype="multipart/form-data" action="/updatecourse/{{ecourse.id }}">
+    {% csrf_token %}
+    <div class="pl-lg-4">
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group ">
+                        <label>Course Title</label>
+                            <input type="text" class="form-control" name="ecoursetitle" placeholder="Enter Course Title" value="{{ecourse.coursename}}" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+
+                    <select name="eactive" id="eactive" class="form-control" style="margin-top: 32px;" >
+                        <option value="" selected hidden>{{ecourse.active}}</option>
+                     <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    </select>
+
+            </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Updated By</label>
+                        <input type="text" class="form-control" name="eupdatedby"  value="{{ecourse.updatedby}}" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Last Updated On</label>
+                        <input type="date" class="form-control" name="elastupdated" value="{{ecourse.lastupdatedon}}" required>
+                </div>
+            </div>
+         </div>
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <label>Course Duration</label>
+        <input type="text" class="form-control" name="ecduration" value="{{ecourse.courseduration}}"  required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Course Logo</label>
+            <input type="file" class="form-control" name="eclogo"  value="{{ecourse.courselogo}}" required>
+        </div>
+
+    </div>
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Chapters</label>
+            {% for i in chapter%}
+
+
+            <input type="text" class="form-control" name="ecchapters" value="{{i.chapter}}" required>
+{% endfor %}
+
+
+
+
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Topics</label>
+            {% for i in topic%}
+            <input type="text" class="form-control" name="ectopics" value="{{i.topic}}" required>
+{% endfor %}
+
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Screens</label>
+            <input type="file" class="form-control" name="ectscreens" value="{{ecourse.coursetopicscreen}}"  required>
+
+
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Course Price</label>
+            <input type="number" class="form-control" name="ecprice" value="{{ecourse.courseprice}}"  required>
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label>Course Description</label>
+            <textarea class="form-control" name="ecdescription"  required>{{ecourse.coursedescription}}</textarea>
+        </div>
+
+    </div>
+
+<input type="submit" value="UpdateCourse" class="btn btn-primary my-3" style="width: 200px;">
+
+</form>
+</div>
+</div>
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

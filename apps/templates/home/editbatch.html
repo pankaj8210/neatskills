@@ -1,0 +1,80 @@
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+<hr>
+<div class="card-body">
+<form class="container mt-5"  name="batchdetails" method="post" enctype="multipart/form-data" action="/updatebatchdetail/{{ebatch.id}}">
+    {% csrf_token %}
+    <div class="pl-lg-4">
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group ">
+                        <label>Batch Name</label>
+                            <input type="text" class="form-control" name="eebatchname" placeholder="Enter Batch Name" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                <select name="eebActive" id="bActive" class="form-control" style="margin-top: 32px;">
+                    <option value="" selected hidden>Choose Active or Not</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Updated By</label>
+                        <input type="text" class="form-control" name="eebupdatedby" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Last Updated On</label>
+                        <input type="date" class="form-control" name="eeblastupdated" required>
+                </div>
+            </div>
+         </div>
+    
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <label>Batch Start Date/Time</label>
+        <input type="text" class="form-control" name="eebstart"  required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Batch End Date/Time</label>
+            <input type="text" class="form-control" name="eebend" required>
+        </div>
+
+    </div>
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Batch Duration</label>
+            <input type="text" class="form-control" name="eebduration"  required>
+        </div>
+
+    </div>    
+<input type="submit" value="AddBatch" class="btn btn-primary my-3" style="width: 200px;">
+
+</form>
+</div>
+</div>
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

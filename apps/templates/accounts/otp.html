@@ -1,0 +1,205 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatSkills-OTP</title>
+    <link rel="stylesheet" href="payment.css"> <!-- Start Include All CSS -->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/elegant-icons.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/animate.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css'%}">-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css'%}">-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/slick.css'%}">-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/nice-select.css'%}">-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css'%}">-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/lightcase.css'%}">-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/preset.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/theme.css'%}" />-->
+    <!--<link rel="stylesheet" href="{% static 'assets/css/responsive.css'%}" />-->
+    <!-- End Include All CSS -->
+
+    <!-- Favicon Icon -->
+    <!--<link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png'%}">-->
+    <!-- Favicon Icon -->
+    <style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Poppins, sans-serif';
+}
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5838fc;
+}
+
+.container{
+   width: 300px;
+  height: 400px;
+  border: 1px solid ;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  justify-content: space-around;
+}
+.container h1{
+  text-align: center;
+}
+.first-row{
+  display: flex;
+}
+.otp{
+  width: 100%;
+  margin-right: 40px;
+  }
+input-field{
+  border: 1px solid #999;
+}
+.input-field input{
+  width: 100%;
+  border: 1px solid black;
+  outline: none;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+.selection{
+  display: flex;
+   justify-content: space-between;
+  align-items:center;
+}
+.selection select{
+  padding: 10px 20px;
+}
+a{
+  background-color: blueviolet;
+  color: white;
+  text-align: center;
+  /*text-transform: uppercase;*/
+  text-decoration: none;
+  padding: 7px;
+  font-size: 14px;
+  transition:0.5s;
+  border: 0px solid #42b72a;
+  border-radius: 8px;
+}
+a:hover{
+  background-color: dodgerblue;
+}
+
+#popUpYes {
+  width: 100px;
+  height: 30px;
+  background-color: green;
+  color: white;
+  border: 2px solid #42b72a;
+  border-radius: 8px;
+  /* SET COLOR IN WHITE */
+}
+
+#popUpYes:hover
+{
+  background-color: red;
+  color: white;
+}
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="container">
+  <p>OTP is sent on your Email.OTP is valid for 1 mins.</p>
+
+  <form method="POST" action="/verify_loginotp/">
+      {% csrf_token %}
+  <div class="otp">
+    <h3>OTP*</h3>
+    <div class="input-field" >
+      <input type="text" name="otp1" required>
+       </div>
+  </div>
+     {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-dismissible alert-success">
+      <button type="button"  class="close" data-dismiss="alert">
+      ×
+      </button>
+      <strong style="color:red;">{{message}}<strong>
+    </div>
+ {% endfor %}
+{% endif %}
+
+  <input type="submit" value='Verify OTP' id="popUpYes">
+  <!--<a href="/verify_loginotp/">Confirm</a></br>-->
+  <a href="/Resend_otp/">Resend Otp</a></br>
+  <div id="countdown"></div>
+  </form>
+</div>
+
+// <script>
+// var timeleft = 60;
+// var downloadTimer = setInterval(function(){
+//   if(timeleft <= 0){
+//     clearInterval(downloadTimer);
+//     document.getElementById("countdown").innerHTML = "";
+//   } else {
+//     document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+//   }
+//   timeleft -= 1;
+// }, 1000);
+// </script>
+<script>
+    $time_limit = "2016-08-14 00:01:00"
+var d = new Date($time_limit);
+var hours = d.getHours(); //00 hours
+var minutes = d.getMinutes(); //10 minutes
+var seconds = 60 * minutes; // 600seconds
+
+if (typeof(Storage) !== "undefined") {
+  if (localStorage.seconds) {
+    seconds = localStorage.seconds;
+  }
+}
+
+function secondPassed() {
+  var minutes = Math.round((seconds - 30) / 60);
+  console.log(minutes);
+  var hours = Math.round((minutes) / 60);
+  var remainingSeconds = seconds % 60;
+  if (remainingSeconds < 10) {
+    remainingSeconds = "0" + remainingSeconds;
+  }
+  if (typeof(Storage) !== "undefined") {
+    localStorage.setItem("seconds", seconds);
+  }
+  document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + remainingSeconds;
+
+  if (seconds == 0) {
+    clearInterval(myVar);
+    document.getElementById('countdown').innerHTML = "Time Out";
+    if (typeof(Storage) !== "undefined") {
+      localStorage.removeItem("seconds");
+    }
+  } else {
+    seconds--;
+    console.log(seconds);
+  }
+
+}
+var myVar = setInterval(secondPassed, 1000);
+</script>
+</body>
+</html>
+

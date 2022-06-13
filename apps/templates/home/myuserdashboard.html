@@ -1,0 +1,354 @@
+{% extends 'layouts/base1.html' %}
+
+{% load static %}
+
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <!-- <h6 class="h2 text-white d-inline-block mb-0">Default</h6> -->
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <!-- <ol class="breadcrumb breadcrumb-links breadcrumb-dark"> -->
+                  <!-- <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li> -->
+                  <!-- <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Default</li> -->
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <!-- <a href="#" class="btn btn-sm btn-neutral">New</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <section class="coursepage-section-2">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-3">
+                  <div class="toolbar-wrapper-2">
+                      <ul class="toolbar-btn nav nav-tabs">
+                          <li><a class="active" href="#grid" data-toggle="tab"><i class="icon_grid-2x2"></i>Grid</a></li>
+                          <li><a href="#list" data-toggle="tab"><i class="ni ni-bullet-list-67"></i>List</a></li>
+                      </ul>
+                      <div class="sorting">
+                          <p>Sort by:</p>
+                          <select name="orderby" class="orderby">
+                              <option value="menu_order" selected="selected">Default</option>
+                              <option value="new">Newest Course</option>
+                              <option value="popular">Popular Course</option>
+                              <option value="rating">Average Rating</option>
+                              <option value="price">Low to High</option>
+                              <option value="price-desc">High to Low</option>
+                          </select>
+                      </div>
+                      <!-- <form class="search-box" method="post" action="#">
+                          <input type="search" name="s" placeholder="Search Courses...">
+                          <button type="submit"><i class="ti-search"></i></button>
+                      </form> -->
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <!-- Tab Content -->
+                  <div class="tab-content">
+                      <!-- Grid Tab -->
+                      <div class="tab-pane fade show in active" id="grid" role="tabpanel">
+                          <div class="row">
+                              {% for i in c %}
+                        <div class="course-item-4"style="padding: 10px">
+                              <div class="ci-thumb">
+                                  <img src="{% static 'assets/images/course/l4.jpg'%}" alt="" style="width: 300px"></br>
+                                  <a class="enroll" href="/payforcourse/{{i.id}}">Enroll Now</a>
+                              </div>
+                              <div class="course-details">
+                                  <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Certification on Import & Export</a>
+                                  <h4><a href="#">Learn Import & Export for Beginners</a></h4>
+                                  <div class="author">
+                                      <img src="{% static 'assets/images/home3/course/a4.png'%}" alt="" >
+                                      <a href="#"></a>
+                                  </div>
+                                  <div class="price-rate">
+                                      <div class="course-price">
+
+                                          <span></span>
+                                      </div>
+                                      <div class="ratings">
+                                          <i class="icon_star"></i>
+                                          <span>4.5 (2,420)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                              {% endfor %}
+                          </div>
+                          <!-- Pagination -->
+                          <!-- <div class="row">
+                              <div class="col-lg-12">
+                                  <div class="bisylms-pagination">
+                                      <span class="current">01</span>
+                                      <a href="#">02</a>
+                                      <a class="next" href="#">next<i class="arrow_right"></i></a>
+                                  </div>
+                              </div>
+                          </div> -->
+                          <!-- Pagination -->
+                      </div>
+                      <!-- Grid Tab -->
+
+                      <!-- List Tab -->
+                      <div class="tab-pane fade in" id="list" role="tabpanel">
+
+                          <div class="course-item-4">
+                              <div class="ci-thumb">
+                                  <img src="{% static 'assets/images/course/l1.jpg'%}" alt=""></br>
+                                  <a class="enroll" href="#">Enroll Now</a>
+                              </div>
+                              <div class="course-details">
+                                  <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Industrial Accounting</a>
+                                  <h4><a href="#">Using creative problem Solving</a></h4>
+                                  <div class="author">
+                                      <img src="{% static 'assets/images/home3/course/a1.png'%}" alt="">
+                                      <a href="#">Ashish Pai/Pandurang Pandhare</a>
+                                  </div>
+                                  <div class="price-rate">
+                                      <div class="course-price">
+
+                                          <span></span>
+                                      </div>
+                                      <div class="ratings">
+                                          <i class="icon_star"></i>
+                                          <span>4.5 (2,420)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="course-item-4">
+                              <div class="ci-thumb">
+                                  <img src="{% static 'assets/images/course/l2.jpg'%}" alt=""></br>
+                                  <a class="enroll" href="#">Enroll Now</a>
+                              </div>
+                              <div class="course-details">
+                                  <a href="#" class="c-cate"><i class="icon_tag_alt"></i>ERP - Microsoft Business Central</a>
+                                  <h4><a href="#">Microsoft Business Central</a></h4>
+                                  <div class="author">
+                                      <img src="{% static 'assets/images/home3/course/a2.png'%}" alt="">
+                                      <a href="#">Rohit Mane</a>
+                                  </div>
+                                  <div class="price-rate">
+                                      <div class="course-price">
+
+                                          <span></span>
+                                      </div>
+                                      <div class="ratings">
+                                          <i class="icon_star"></i>
+                                          <span>4.5 (2,420)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="course-item-4">
+                              <div class="ci-thumb">
+                                  <img src="{% static 'assets/images/course/l3.jpg'%}" alt=""></br>
+                                  <a class="enroll" href="#">Enroll Now</a>
+                              </div>
+                              <div class="course-details">
+                                  <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Certification on Taxations Laws</a>
+                                  <h4><a href="#">Learn Taxations Laws for Beginners</a></h4>
+                                  <div class="author">
+                                      <img src="{% static 'assets/images/home3/course/a3.png'%}" alt="">
+                                      <a href="#">Ashish Pai/Pandurang Pandhare</a>
+                                  </div>
+                                  <div class="price-rate">
+                                      <div class="course-price">
+
+                                          <span></span>
+                                      </div>
+                                      <div class="ratings">
+                                          <i class="icon_star"></i>
+                                          <span>4.5 (2,420)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="course-item-4">
+                              <div class="ci-thumb">
+                                  <img src="{% static 'assets/images/course/l4.jpg'%}" alt=""></br>
+                                  <a class="enroll" href="#">Enroll Now</a>
+                              </div>
+                              <div class="course-details">
+                                  <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Certification on Import & Export</a>
+                                  <h4><a href="#">Learn Import & Export for Beginners</a></h4>
+                                  <div class="author">
+                                      <img src="{% static 'assets/images/home3/course/a4.png'%}" alt="">
+                                      <a href="#"></a>
+                                  </div>
+                                  <div class="price-rate">
+                                      <div class="course-price">
+
+                                          <span></span>
+                                      </div>
+                                      <div class="ratings">
+                                          <i class="icon_star"></i>
+                                          <span>4.5 (2,420)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="course-item-4">
+                              <div class="ci-thumb">
+                                  <img src="{% static 'assets/images/course/l5.jpg'%}" alt=""></br>
+                                  <a class="enroll" href="#">Enroll Now</a>
+                              </div>
+                              <div class="course-details">
+                                  <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Learn to Speak English</a>
+                                  <h4><a href="#">Fundamentals of Speaking English</a></h4>
+                                  <div class="author">
+                                      <img src="{% static 'assets/images/home3/course/a5.png'%}" alt="">
+                                      <a href="#">Ms Banerjee</a>
+                                  </div>
+                                  <div class="price-rate">
+                                      <div class="course-price">
+
+                                          <span></span>
+                                      </div>
+                                      <div class="ratings">
+                                          <i class="icon_star"></i>
+                                          <span>4.5 (2,420)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                           Pagination
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <div class="bisylms-pagination">
+                                      <span class="current">01</span>
+                                      <a href="#">02</a>
+                                      <a class="next" href="#">next<i class="arrow_right"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                           Pagination
+                      </div>
+                      <!-- Grid Tab -->
+                  </div>
+                  <!-- Tab Content -->
+              </div>
+              <!-- <div class="col-lg-3">
+                  <div class="course-sidebar">
+                      <aside class="widget">
+                          <h3 class="widget-title">Course Categories</h3>
+                          <ul>
+                              <li><a href="#">Industrial Accounting</a></li>
+                              <li><a href="#">Microsoft Business Central</a></li>
+                              <li><a href="#">Taxations Laws</a></li>
+                              <li><a href="#">Import & Export</a></li>
+                              <li><a href="#">Speaking English</a></li> -->
+                              <!--<li><a href="#">Technology</a></li>-->
+                              <!--<li><a href="#">General</a></li>-->
+                          <!-- </ul>
+                      </aside>
+                      <aside class="widget widget-filter">
+                          <h3 class="widget-title">Price Filter</h3>
+                          <form action="#" method="get" class="clearfix">
+                              <div class="price-filter">
+                                  <ul>
+                                      <li>
+                                          <input type="checkbox" checked="checked" id="all" name="all" value="all">
+                                          <label for="all">
+                                              All
+                                          </label>
+                                      </li>
+                                      <li>
+                                          <input type="checkbox" id="premium" name="premium" value="premium">
+                                          <label for="premium">
+                                              Premium Courses
+                                          </label>
+                                      </li>
+                                      <li>
+                                          <input type="checkbox" id="free" name="free" value="free">
+                                          <label for="free">
+                                              Free Courses
+                                          </label>
+                                      </li>
+                                  </ul>
+                                  <button type="submit">Filter Results</button>
+                              </div>
+                          </form>
+                      </aside>
+                      <aside class="widget">
+                          <h3 class="widget-title">Latest Courses</h3>
+                          <div class="latest-course">
+                              <a href="single-course.html"><img src="{% static 'assets/images/course/1.jpg'%}" alt=""></a>
+                              <h5><a href="single-course.html">Using creative problem Solving<br> coming Soon</a></h5>
+                              <div class="course-price">
+
+                              </div>
+                          </div>
+                          <div class="latest-course">
+                              <a href="single-course.html"><img src="{% static 'assets/images/course/2.jpg'%}" alt=""></a>
+                              <h5><a href="single-course.html">Fundamentals of UI Design<br>coming Soon</a></h5>
+                              <div class="course-price">
+
+                                  <span></span>
+                              </div>
+                          </div>
+                          <div class="latest-course">
+                              <a href="single-course.html"><img src="{% static 'assets/images/course/3.jpg'%}" alt=""></a>
+                              <h5><a href="single-course.html">Making music Other people<br> coming Soon</a></h5>
+                              <div class="course-price">
+
+                                  <span</span>
+                              </div>
+                          </div>
+                          <div class="latest-course">
+                              <a href="single-course.html"><img src="{% static 'assets/images/course/4.jpg'%}" alt=""></a>
+                              <h5><a href="single-course.html">Learning jQuery mobile.<br> coming Soon</a></h5>
+                              <div class="course-price">
+
+                                  <span></span>
+                              </div>
+                          </div>
+                      </aside>
+                  </div> -->
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+      {% include "includes/footer.html" %}
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="/static/assets1/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

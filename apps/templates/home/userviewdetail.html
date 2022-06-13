@@ -1,0 +1,179 @@
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+
+
+
+<hr>
+<div class="card-body">
+<form class="container mt-5"  name="userdetails" method="post" enctype="multipart/form-data" action="/updateuserrecord/{{user.id}}">
+    {% csrf_token %}
+    <div class="pl-lg-4">
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group ">
+                        <label>Full Name</label>
+                            <input type="text" class="form-control" name="uufullname">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                <select name="uuActive" id="Active" class="form-control" style="margin-top: 32px;">
+                    <option value="" selected hidden>Choose Active or Not</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Updated By</label>
+                        <input type="text" class="form-control" name="uuupdatedby" >
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Last Updated On</label>
+                        <input type="date" class="form-control" name="lastupdated" >
+                </div>
+            </div>
+         </div>
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <label>First Name</label>
+        <input type="text" class="form-control" name="uufname" >
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="uulname" >
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>DOB</label>
+            <input type="date" class="form-control" name="uudob" required>
+        </div>
+
+    
+
+
+    
+        <div class="form-group col-md-6">
+            <label>Email</label>
+            <input type="text" class="form-control" name="uuemail" >
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Mobile Number</label>
+            <input type="number" class="form-control" name="uumno">
+        </div>
+
+    
+
+
+    
+        <div class="form-group col-md-6">
+            <label>Gender</label>
+            <input type="text" class="form-control" name="uugender" >
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Present Address Village</label>
+            <input type="text" class="form-control" name="uusddders">
+        </div>
+        <div class="form-group col-md-3">
+            <label>District</label>
+            <input type="text" class="form-control" name="uudistrict" >
+        </div>
+
+        <div class="form-group col-md-3">
+            <label>State</label>
+            <input type="text" class="form-control" name="uucity" >
+        </div>
+
+        <div class="form-group col-md-3">
+            <label>Pin-Code</label>
+            <input type="text" class="form-control" name="uupin" >
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Aadhar Number</label>
+            <input type="number" class="form-control" name="uuaadhar">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Course Inrolled</label>
+            <input type="text" class="form-control" name="" >
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>HSC</label>
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>SSC</label>
+            <input type="text" class="form-control" name="" >
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+        </div>
+
+        <div class="form-group col-md-3">
+            <label>Graduation</label>
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Post Graduation</label>
+            <input type="text" class="form-control" name="" >
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="">
+        </div>
+
+    </div>
+
+
+<input type="submit" value="Delete" class="btn btn-primary my-3" style="width: 200px;">
+
+</form>
+</div>
+</div>
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

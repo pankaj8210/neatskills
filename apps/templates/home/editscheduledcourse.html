@@ -1,0 +1,82 @@
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+
+
+<hr>
+<div class="card-body">
+<form class="container mt-5"  name="batchdetails" method="post" enctype="multipart/form-data" action="/updatecourseche11/{{ebatch.id}}">
+    {% csrf_token %}
+    <div class="pl-lg-4">
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group ">
+                        <label>Course Name</label>
+                            <input type="text" class="form-control" name="batchnameche" placeholder="Enter Batch Name" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                <select name="bActiveche" id="bActive" class="form-control" style="margin-top: 32px;">
+                    <option value="" selected hidden>Choose Active or Not</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Updated By</label>
+                        <input type="text" class="form-control" name="bupdatedbyche" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Last Updated On</label>
+                        <input type="date" class="form-control" name="blastupdatedche" required>
+                </div>
+            </div>
+         </div>
+    
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <label>Batch Timing</label>
+        <input type="text" class="form-control" name="bstartche"  required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Student Attend</label>
+            <input type="text" class="form-control" name="bendche" required>
+        </div>
+
+    </div>
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Batch Duration</label>
+            <input type="text" class="form-control" name="bdurationche"  required>
+        </div>
+
+    </div>    
+<input type="submit" value="Course Schedule" class="btn btn-primary my-3" style="width: 200px;">
+
+</form>
+</div>
+</div>
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

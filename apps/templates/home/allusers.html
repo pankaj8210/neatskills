@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+
+<style>
+    tr{
+        text-align: center;
+    }
+</style>
+
+<hr>
+<form method="post" enctype="multipart/form-data" action="/updateuserrecord">
+    {% csrf_token %}
+<div class="container">
+<table class="table table-hover " id="example">
+    <thead>
+        <tr style="background-color:darkolivegreen; color : white">
+            <th>S.No.</th>
+            <th>Full Name</th>
+            <th>Email Id</th>
+            <th>Contact</th>
+            <!-- <th>Gender</th> -->
+            <!-- <th>Image</th> -->
+            <th>Action</th>
+        </tr>
+
+    </thead>
+
+        <tbody>
+            {% for i in alluser %}
+
+            <tr style="background-color: #DEB887;">
+                <td>{{forloop.counter}}</td>
+                <td>{{i.fullname}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.mobile}}</td>
+                <!-- <td>{{i.gender}}</td> -->
+                <!-- <td><img src ="{{i.image.url}}" style="width: 80px; height:80px; border-radius:50%;"></td> -->
+                <td><a href="/userviewdetail/{{i.id}}" class="btn btn-success btn-sm">View Details</a>
+                <td><a id="del-user" data-id="{{ i.id }}" class="btn btn-danger btn-sm" >Delete</a></td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+</table>
+
+</div>
+    </form>
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

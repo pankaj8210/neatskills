@@ -1,0 +1,72 @@
+
+{% extends 'layouts/base.html' %}
+
+{%  load static %}
+
+{% block content %}
+
+
+<style>
+    tr{
+        text-align: center;
+    }
+</style>
+
+
+
+<hr>
+<div class="container">
+<table class="table table-hover " id="bootstrapdatatable">
+    <thead>
+        <tr style="background-color:darkolivegreen; color : white; ">
+            <th>S.No.</th>
+            <th>Course Name</th>
+            <th>Active</th>
+            <th>Course Duration</th>
+            <th>batchtime</th>
+            <th>studentattemt</th>
+            <th>updatedby</th>
+            <th>Last Updated On</th>
+            <th>Action</th>
+        </tr>
+
+    </thead>
+
+        <tbody>
+            {% for i in allbatchs %}
+
+            <tr style="background-color: #DEB887;">
+                <td>{{forloop.counter}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.active}}</td>
+                <td>{{i.duration}}</td>
+                <td>{{i.batchtime}}</td>
+                <td>{{i.studentattemt}}</td>
+                <td>{{i.updatedby}}</td>
+                <td>{{i.lastupdatedon}}</td>
+
+
+
+                <td>
+                    <a href="Edit_schedulecourse/{{ i.id }}" class="btn btn-success btn-sm">Edit</a>
+                    <a id="del-schedulecourse" data-id="{{ i.id }}"class="btn btn-danger btn-sm" style="color: white;">Delete</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+</table>
+
+</div>
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
+
+
